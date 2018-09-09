@@ -19,18 +19,7 @@ if (!program.rootTopic) {
   process.exit(1)
 }
 
-console.log('server', program.server)
-console.log('username', program.user)
-console.log('password', program.password)
-console.log('root topic', program.rootTopic)
-console.log('verbose', program.verbose)
-console.log('preamble', program.preamble)
-console.log('pulse high', program.pulseHigh)
-console.log('pulse low', program.pulseLow)
-
-//process.exit(1)
-
-const mqtt = require('mqtt').connect('mqtt://192.168.32.2')
+const mqtt = require('mqtt').connect(program.server)
 const match = require('mqtt-match')
 
 const processors = {
