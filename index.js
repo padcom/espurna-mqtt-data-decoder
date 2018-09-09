@@ -4,7 +4,7 @@ const program = require('commander')
 
 program
   .version('1.0.0')
-  .option('-s, --server <server>', 'MQTT server to connect to', 'localhost')
+  .option('-s, --server <url>', 'URL to MQTT server to connect to [mqtt://localhost]', 'mqtt://localhost')
   .option('-u, --user <user>', 'MQTT username')
   .option('-p, --password <password>', 'MQTT password')
   .option('-t, --root-topic <root-topic>', 'MQTT root topic', false)
@@ -42,7 +42,6 @@ const processors = {
   }
 }
 
-
 mqtt.on('connect', () => {
   console.log(`Connected to MQTT at ${program.server}`)
   for (const topic in processors) {
@@ -54,6 +53,9 @@ mqtt.on('connect', () => {
 mqtt.on('message', (topic, message) => {
   for (const subscription in processors) {
     if (match(subscription, topic)) {
+      if (program.verbose) {
+        console.log(`Received message on topic ${topic} with payload ${message}`)
+      }
       processors[subscription]({ topic, message })
     }
   }
