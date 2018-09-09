@@ -1,0 +1,12 @@
+{
+  "name": "mqtt-data-decoder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Matthias Hryniszak",
+  "dependencies": {
+    "commander": "^2.18.0",
+    "mqtt": "^2.18.8",
+    "mqtt-match": "^2.0.1"
+  }
+}
