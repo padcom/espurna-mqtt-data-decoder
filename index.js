@@ -3,12 +3,12 @@
 const program = require('commander')
 
 program
-  .version('1.0.0')
+  .version('1.0.0', '-v, --version')
   .option('-s, --server <url>', 'URL to MQTT server to connect to [mqtt://localhost]', 'mqtt://localhost')
   .option('-u, --user <user>', 'MQTT username')
   .option('-p, --password <password>', 'MQTT password')
   .option('-t, --root-topic <root-topic>', 'MQTT root topic', false)
-  .option('-v, --verbose', 'Show information about all processed messages', false)
+  .option('--verbose', 'Show information about all processed messages', false)
   .option('--preamble <length>', 'Set preamble length [1FE0]', '1FE0')
   .option('--pulse-high <length>', 'Set high pulse length [0118]', '0118')
   .option('--pulse-low <length>', 'Set low pulse length [030C]', '030C')
